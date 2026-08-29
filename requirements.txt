@@ -1,0 +1,31 @@
+# ---------------------------------------------------------------------------
+# GPU note: verified working on an RTX 5070 (Blackwell, sm_120) with the
+# DEFAULT PyPI wheel — torch 2.13.0+cu130. No custom index URL needed.
+#   uv venv --python 3.12 && source .venv/bin/activate
+#   uv pip install torch torchvision
+#   uv pip install -r requirements.txt
+# Verify with: python -c "import torch; print(torch.cuda.get_arch_list())"
+# ---------------------------------------------------------------------------
+
+# Detection / video
+ultralytics>=8.3.0
+opencv-python>=4.9.0
+numpy>=1.26.0
+
+# Audio transcription
+faster-whisper>=1.0.0
+
+# Retrieval + local LLM
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+ollama>=0.3.0
+
+# Data handling and notebook display
+pandas>=2.2.0
+matplotlib>=3.8.0
+pillow>=10.0.0
+ipython>=8.20.0
+notebook>=7.0.0
+
+# Also required at runtime (not pip-installable):
+#   ollama pull llama3.2

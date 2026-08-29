@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Media — far too large for git (115 MB). Document sourcing in the README.
+*.mp3
+*.mp4
+video/
+
+# Model weights — ultralytics downloads these on first run
+*.pt
+
+# Generated run artifacts
+task2_outputs/*
+!task2_outputs/.gitkeep
+
+# Deliberately KEPT: transcription.json / transcription.txt
+# They are small and let anyone run the Task 1 RAG demo without the 24 MB audio.
