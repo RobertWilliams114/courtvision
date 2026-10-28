@@ -78,7 +78,7 @@ export COURTVISION_VIDEO=/path/to/your/game.mp4
 
 Default path if unset is `video/basketball_video.mp4`.
 
-A pre-computed transcript (`transcription.json`, 597 segments) **is** included, so the retrieval and Q&A pipeline runs immediately without re-transcribing or even having the audio. Only Task verification needs the video.
+A pre-computed transcript (`transcription.json`, 597 segments) **is** included, so the retrieval and Q&A pipeline runs immediately without re-transcribing or even having the audio. Only video verification needs the video.
 
 ---
 
