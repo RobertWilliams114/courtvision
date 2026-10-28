@@ -13,9 +13,9 @@ Runs locally end to end. No cloud APIs.
 ```
 "What did LeBron do in the fourth quarter?"
         │
-        ├─ Task 1 ── search commentary embeddings ─→ relevant segments + timestamps
+        ├─ Answer ── search commentary embeddings ─→ relevant segments + timestamps
         │                                                      │
-        └─ Task 2 ── seek to those timestamps ────────────────┘
+        └─ Verify ── seek to those timestamps ────────────────┘
                        ├─ extract 10-second clips
                        ├─ YOLOv8 player detection
                        └─ bird's-eye court diagram
@@ -23,9 +23,9 @@ Runs locally end to end. No cloud APIs.
    answer + clips + diagrams, together
 ```
 
-**Task 1 — commentary Q&A.** `faster-whisper` transcribes the broadcast audio with word-level timestamps. Segments are embedded and indexed in ChromaDB. A question retrieves the relevant segments, and a local LLM (`llama3.2` via Ollama) answers from them.
+**Commentary Q&A.** `faster-whisper` transcribes the broadcast audio with word-level timestamps. Segments are embedded and indexed in ChromaDB. A question retrieves the relevant segments, and a local LLM (`llama3.2` via Ollama) answers from them.
 
-**Task 2 — video verification.** The timestamps from Task 1 drive clip extraction with OpenCV. YOLOv8 detects players in the extracted frames, and their positions are projected onto a court schematic.
+**Video verification.** The timestamps from the commentary search drive clip extraction with OpenCV. YOLOv8 detects players in the extracted frames, and their positions are projected onto a court schematic.
 
 The integration is the point: retrieval and vision are not two separate demos, they are one query path.
 
@@ -78,7 +78,7 @@ export COURTVISION_VIDEO=/path/to/your/game.mp4
 
 Default path if unset is `video/basketball_video.mp4`.
 
-A pre-computed transcript (`transcription.json`, 597 segments) **is** included, so the Task 1 retrieval and Q&A pipeline runs immediately without re-transcribing or even having the audio. Only Task 2 needs the video.
+A pre-computed transcript (`transcription.json`, 597 segments) **is** included, so the retrieval and Q&A pipeline runs immediately without re-transcribing or even having the audio. Only Task verification needs the video.
 
 ---
 
@@ -96,4 +96,4 @@ Python 3.12 · faster-whisper · ChromaDB · sentence-transformers · Ollama (`l
 
 ## Provenance
 
-Built for CS 370 (Introduction to AI) at NJIT, Fall 2025, and cleaned up since. The pipeline design and the Task 1 ↔ Task 2 integration are my own.
+Built for CS 370 (Introduction to AI) at NJIT, Fall 2025, and cleaned up since. The pipeline design and the integration between the two halves are my own.

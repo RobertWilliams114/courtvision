@@ -14,8 +14,8 @@ video/
 *.pt
 
 # Generated run artifacts
-task2_outputs/*
-!task2_outputs/.gitkeep
+verification_outputs/*
+!verification_outputs/.gitkeep
 
 # Deliberately KEPT: transcription.json / transcription.txt
-# They are small and let anyone run the Task 1 RAG demo without the 24 MB audio.
+# They are small and let anyone run the RAG demo without the 24 MB audio.
